@@ -30,14 +30,23 @@ public class WorkerResource {
     @GetMapping
     public ResponseEntity<List<Worker>> findAll() {
         List<Worker> list = repository.findAll();
-         return ResponseEntity.ok(list);
+        return ResponseEntity.ok(list);
     }
 
-        @GetMapping(value = "/{id}")
-        public ResponseEntity<Worker> findByID(@PathVariable Long id) {
-        logger.info("PORT = "+ env.getProperty("local.server.port"));
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Worker> findByID(@PathVariable Long id) {
 
-            Worker obj = repository.findById(id).get();
-             return ResponseEntity.ok(obj);
-        }                                                  
+     //test no método
+       /* try {
+            Thread.sleep(3000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
+
+        logger.info("PORT = " + env.getProperty("local.server.port"));
+
+        Worker obj = repository.findById(id).get();
+        return ResponseEntity.ok(obj);
+    }
+
 }
